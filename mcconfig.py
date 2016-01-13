@@ -1,4 +1,4 @@
-worlds["world"] = "C:\Users\Richard\Desktop\mc server world\world" 
+worlds["world"] = "C:\Users\Richard\Desktop\Minecraft-Server\world" 
 
 def townFilter(poi): 	### blue town icon
     if poi['id'] == 'Town':
@@ -103,6 +103,11 @@ renders['renderDay'] = {
                     'y':63,
                     'z':1223,
                     'name':'Atlantis 2'},
+					{'id':'Dungeon',		### atlantis 3
+                    'x':-2265,
+                    'y':63,
+                    'z':2080,
+                    'name':'Atlantis 3'},
 					{'id':'Dungeon',		### mine
                     'x':-111,
                     'y':70,
@@ -190,6 +195,15 @@ renders['renderNether'] = {
 	'forcerender':False,
 }
 
+renders['renderNether2'] = {
+	'world':'world',
+	'title':'Nether 2',
+	'rendermode': 'nether',
+	'dimension':'nether',
+	'northdirection':'lower-right',
+	'forcerender':False,
+}
+
 renders['renderEnd'] = {
 	'world':'world',
 	'title':'End',
@@ -198,6 +212,13 @@ renders['renderEnd'] = {
 	'forcerender':False,
 }
 
-outputdir = "C:\Users\Richard\Documents\GitHub\mc-server-map\map render"
+renders['Railways'] = {
+	'world':'world',
+	'title':'Railways',
+	'rendermode': [ClearBase(), MineralOverlay(minerals = [(27, (255, 0, 0)), (28, (255, 0, 0)), (66, (255, 0, 0))]), EdgeLines()],
+	'forcerender':False,
+}
+
+outputdir = "C:\Users\Richard\Desktop\map render"
 ### outputdir = "C:\Users\Karsten\Desktop\map render"
 ### texturepath = "C:\Users\Karsten\Desktop\map render\Misa.zip"
