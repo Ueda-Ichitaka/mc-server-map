@@ -1,4 +1,7 @@
-worlds["world"] = "C:\Users\Richard\Desktop\Minecraft-Server\world" 
+###worlds["world"] = "C:\Users\Richard\Desktop\Minecraft-Server\world" 
+###worlds["world"] = "C:\Users\Richard\AppData\Roaming\.minecraft\saves\Survival 2. Versuch - Kopie"
+###worlds["world"] = "C:\Users\Richard\AppData\Roaming\.minecraft\saves\Millenaire"
+worlds["world"] = "C:\Users\Richard\.litwrl\games\LitWR.Basic\saves\Life in the Woods 1"
 
 def townFilter(poi): 	### blue town icon
     if poi['id'] == 'Town':
@@ -158,7 +161,7 @@ renders['renderDay'] = {
 				dict(name="Farms", filterFunction=farmFilter, icon="icons/marker_hoe.png"),
 				dict(name="Mob Farms", filterFunction=mobFarmFilter, icon="icons/marker_hoe_red.png")],
     ### Note: The 'icon' parameter allows you to specify a custom icon, as per
-    ###       standard markers. This icon must exist in the same folder as your
+    ###      standard markers. This icon must exist in the same folder as your
     ###       custom webassets or in the same folder as the generated index.html
     ###       in this case, we use the marker_town.png icon which comes with
     ###       the Overviewer by default, located in a subdirectory of web_assets.
@@ -170,6 +173,14 @@ renders['renderDay2'] = {
 	'rendermode':'smooth_lighting',
 	'northdirection':'lower-right',
 	'forcerender':False,
+	'markers': [dict(name="Towns", filterFunction=townFilter, icon="icons/marker_town.png"),
+				dict(name="Mines", filterFunction=mineFilter, icon="icons/marker_mine.png"),
+				dict(name="Construction Sites", filterFunction=constrFilter, icon="icons/marker_mine_red.png"),
+				dict(name="Castles", filterFunction=castleFilter, icon="icons/marker_tower.png"),
+				dict(name="Dungeons", filterFunction=dungeonFilter, icon="icons/marker_tower_red.png"),
+				dict(name="Factories", filterFunction=factoryFilter, icon="icons/marker_factory.png"),
+				dict(name="Farms", filterFunction=farmFilter, icon="icons/marker_hoe.png"),
+				dict(name="Mob Farms", filterFunction=mobFarmFilter, icon="icons/marker_hoe_red.png")],
 }	
 
 renders['renderNight'] = {
@@ -177,6 +188,14 @@ renders['renderNight'] = {
 	'title':'Overworld Night',
 	'rendermode': 'smooth_night',
 	'forcerender':False,
+	'markers': [dict(name="Towns", filterFunction=townFilter, icon="icons/marker_town.png"),
+				dict(name="Mines", filterFunction=mineFilter, icon="icons/marker_mine.png"),
+				dict(name="Construction Sites", filterFunction=constrFilter, icon="icons/marker_mine_red.png"),
+				dict(name="Castles", filterFunction=castleFilter, icon="icons/marker_tower.png"),
+				dict(name="Dungeons", filterFunction=dungeonFilter, icon="icons/marker_tower_red.png"),
+				dict(name="Factories", filterFunction=factoryFilter, icon="icons/marker_factory.png"),
+				dict(name="Farms", filterFunction=farmFilter, icon="icons/marker_hoe.png"),
+				dict(name="Mob Farms", filterFunction=mobFarmFilter, icon="icons/marker_hoe_red.png")],
 }	
 
 renders['renderNight2'] = {
@@ -185,6 +204,14 @@ renders['renderNight2'] = {
 	'rendermode': 'smooth_night',
 	'northdirection':'lower-right',
 	'forcerender':False,
+	'markers': [dict(name="Towns", filterFunction=townFilter, icon="icons/marker_town.png"),
+				dict(name="Mines", filterFunction=mineFilter, icon="icons/marker_mine.png"),
+				dict(name="Construction Sites", filterFunction=constrFilter, icon="icons/marker_mine_red.png"),
+				dict(name="Castles", filterFunction=castleFilter, icon="icons/marker_tower.png"),
+				dict(name="Dungeons", filterFunction=dungeonFilter, icon="icons/marker_tower_red.png"),
+				dict(name="Factories", filterFunction=factoryFilter, icon="icons/marker_factory.png"),
+				dict(name="Farms", filterFunction=farmFilter, icon="icons/marker_hoe.png"),
+				dict(name="Mob Farms", filterFunction=mobFarmFilter, icon="icons/marker_hoe_red.png")],
 }
 
 renders['renderNether'] = {
@@ -212,13 +239,58 @@ renders['renderEnd'] = {
 	'forcerender':False,
 }
 
-renders['Railways'] = {
+renders['cave'] = {
 	'world':'world',
-	'title':'Railways',
-	'rendermode': [ClearBase(), MineralOverlay(minerals = [(27, (255, 0, 0)), (28, (255, 0, 0)), (66, (255, 0, 0))]), EdgeLines()],
+	'title':'Cave',
+	'rendermode':[Base(), EdgeLines(), Cave(), Depth(min = 0, max = 56)],
 	'forcerender':False,
 }
 
-outputdir = "C:\Users\Richard\Desktop\map render"
-### outputdir = "C:\Users\Karsten\Desktop\map render"
-### texturepath = "C:\Users\Karsten\Desktop\map render\Misa.zip"
+renders['Railways'] = {
+	'world':'world',
+	'title':'Railways',
+	'rendermode': [ClearBase(), MineralOverlay(minerals = [(27, (255, 0, 0)), (28, (255, 0, 0)), (66, (255, 0, 0))]), EdgeLines(opacity = 1.0)],
+	'forcerender':False,
+}
+
+
+###renders['Biomes'] = {
+###	'world':'world',
+###	'title':'Biomes',
+###	'rendermode': [ClearBase(), BiomeOverlay()],
+###	'forcerender':False,
+###}
+
+###renders['Minerals'] = {
+###	'world':'world',
+###	'title':'Minerals',
+###	'rendermode': [ClearBase(), MineralOverlay()],
+###	'forcerender':False,
+###}
+
+###renders['Structures'] = {
+###	'world':'world',
+###	'title':'Structures',
+###	'rendermode':[ClearBase(), StructureOverlay()],
+###	'forcerender':False,
+###}
+
+renders['Slimes'] = {
+	'world':'world',
+	'title':'Slimes',
+	'rendermode': [ClearBase(), SlimeOverlay()],
+	'forcerender':False,
+}
+
+###renders['Mobspawn'] = {
+###	'world':'world',
+###	'title':'Mobspawns',
+###	'rendermode': [ClearBase(), SpawnOverlay()],
+###	'forcerender':False,
+###}
+
+###outputdir = "C:\Users\Richard\Desktop\map render\server"
+###outputdir = "C:\Users\Richard\Desktop\map render\Millenaire"
+outputdir = "C:\Users\Richard\Desktop\map render\Life in the Woods"
+###outputdir = "C:\Users\Richard\Desktop\map render\server_misa"
+###texturepath = "C:\Users\Richard\Desktop\map render\Misa.zip"
